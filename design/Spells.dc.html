@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spells tab</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Spectral:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b1410}
+a{color:#d9b25c}a:hover{color:#ecc978}
+.lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a5b8aa;font-weight:600}
+.tab{font:500 13px Inter,sans-serif;background:transparent;border:0;color:#a5b8aa;padding:12px 2px;cursor:pointer}
+.flt{font:500 12px Inter,sans-serif;color:#a5b8aa;background:transparent;border:1px solid #284032;border-radius:999px;height:32px;padding:0 12px;cursor:pointer}
+</style>
+</helmet>
+<div style="width: 760px; height: 880px; box-sizing: border-box; display: flex; flex-direction: column; background: #112019; color: #eee9d8; font-family: Inter, system-ui, sans-serif; font-size: 14px; border: 1px solid #284032; border-radius: 12px; overflow: hidden">
+
+<nav style="display: flex; gap: 16px; padding: 0 20px; border-bottom: 1px solid #284032">
+<button class="tab">Abilities</button>
+<button class="tab" style="color: #eee9d8; box-shadow: inset 0 -2px 0 #b49ae8">Spells</button>
+<button class="tab">Items</button>
+<button class="tab">Target</button>
+</nav>
+
+<div style="padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #1f3529">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: Spectral, serif; font-size: 18px; font-weight: 600">Ilse Marr · Wizard 3</span>
+<span style="font-size: 12px; color: #a5b8aa">Intelligence · prepared 6 of 6</span>
+</div>
+<div style="display: flex; gap: 8px">
+<div style="background: #241c36; border: 1px solid #453766; border-radius: 8px; padding: 6px 12px; text-align: center"><div class="lbl" style="color: #c3b6e0">Save DC</div><div style="font-weight: 600; font-size: 16px">13</div></div>
+<div style="background: #241c36; border: 1px solid #453766; border-radius: 8px; padding: 6px 12px; text-align: center"><div class="lbl" style="color: #c3b6e0">Attack</div><div style="font-weight: 600; font-size: 16px">+5</div></div>
+</div>
+</div>
+
+<div style="display: flex; gap: 24px; align-items: center">
+<div style="display: flex; align-items: center; gap: 8px"><span class="lbl">1st</span>
+<span style="width: 14px; height: 14px; border-radius: 50%; background: #b49ae8"></span>
+<span style="width: 14px; height: 14px; border-radius: 50%; background: #b49ae8"></span>
+<span style="width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid #4f4470"></span>
+<span style="width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid #4f4470"></span>
+<span style="font-size: 12px; color: #a5b8aa">2 / 4</span></div>
+<div style="display: flex; align-items: center; gap: 8px"><span class="lbl">2nd</span>
+<span style="width: 14px; height: 14px; border-radius: 50%; background: #b48ff0"></span>
+<span style="width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid #5a4a80"></span>
+<span style="font-size: 12px; color: #a5b8aa">1 / 2</span></div>
+<div style="margin-left: auto; font-size: 12px; color: #a5b8aa">Concentrating: <span style="color: #eee9d8">nothing</span></div>
+</div>
+
+<div style="display: flex; gap: 6px">
+<button class="flt" style="color: #150f22; background: #b49ae8; border-color: #b49ae8; font-weight: 600">All</button>
+<button class="flt">Action</button>
+<button class="flt">Bonus</button>
+<button class="flt">Reaction</button>
+<button class="flt">Ritual</button>
+</div>
+</div>
+
+<div style="flex: 1; overflow: auto; padding: 14px 20px 20px; display: flex; flex-direction: column; gap: 14px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="lbl">Cantrips · free</span>
+<sc-for list="{{cantrips}}" as="s" hint-placeholder-count="3">
+<button style="display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; text-align: left; font: 14px Inter,sans-serif; color: #eee9d8; background: #162920; border: 1px solid #284032; border-radius: 8px; padding: 8px 12px; cursor: pointer">
+<span aria-hidden="true" style="flex: 0 0 auto; width: 36px; height: 36px; border-radius: 8px; background: #241c36; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 512 512"><path fill="#b49ae8" d="{{s.icon}}"></path></svg></span><span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">{{s.name}}</span><span style="font-size: 12px; color: #a5b8aa">{{s.effect}}</span></span>
+<span style="font-size: 12px; color: #a5b8aa; white-space: nowrap">{{s.meta}}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="lbl">1st level</span>
+
+<div style="background: #241c36; border: 1px solid #6a55a0; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span aria-hidden="true" style="flex: 0 0 auto; width: 36px; height: 36px; border-radius: 8px; background: #2a2140; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 512 512"><path fill="#b49ae8" d="M17.34 17.38v34.08C37.24 85.91 61.4 120.5 95.03 151c6.97 24.6 23.57 43.7 46.27 53.9-5.9-8.2-9.4-18.1-9.6-30.1 12 .1 21.9 3.7 30.1 9.6-10.1-22.5-28.7-39-52.9-46-40.28-36.2-66.64-78.82-89.03-121.02zm26.96 0C98.65 32.32 173.5 71.74 240.5 124.5l16.3-11.6C205.6 71.81 149.6 38.58 99.97 17.38zm110.1 0c28.4 8.14 52.8 19.57 75.3 32.83 13 21.96 34.1 36.14 58.6 40.15-7.8-6.38-13.7-15.05-17-26.58 11.7-2.98 22.1-2.09 31.5 1.46-15.5-19.08-37.8-30.23-63-30.76-10.3-6.07-21-11.82-32.3-17.1zm171.3 4.96L321 71.62c-6.1 10.46-12.1 20.92-18.2 31.38-14.6 11.2-26.3 18.7-40.6 29l39.6 22.8h.1l38.3-13.9c37.3 28.7 84.7 43.6 133.5 39.8-21.2-44.6-57.8-78.2-101.5-96.03l-7-39.5zM194.9 148.8l-17.2 46.4c-8.6 8.4-17.2 17.1-25.7 25.7-14.9 5.8-31.2 11.8-46.6 17.5l32.3 32.3 40.6-3.5c28.6 37.3 70.5 64 118.6 72.9-8.9-48.5-35.6-90.5-73.1-119l3.4-40zm123.3 20l-18.2 6.6c17.1 17.7 33.5 38.1 44.3 52.6 1.1 24.4 12.1 46.1 30.6 61.3-3.5-9.5-4.3-19.9-1.4-31.6 11.6 3.3 20.2 9.3 26.6 17.1-4.1-25.4-19-47-42.3-59.9-12-15.9-25.3-31.3-39.6-46.1zM17.34 247.2v49.7c14.05 24.6 33.51 44.5 56.99 61 12.88 23.6 34.67 38.8 60.27 43-7.8-6.4-13.8-15.1-17.1-26.6 11.7-3 22.2-2.1 31.6 1.5-15-18.5-36.3-29.5-60.47-30.7-35.62-23.9-60.18-54.2-71.29-97.9zM441.3 249l-28.7 40.4c-10.5 6-20.9 12.1-31.4 18.1-16.1 1.9-33.2 3.3-49.6 4.8l22.9 39.6 40.1 7.1c17.9 43.5 51.5 80.1 95.7 101.2 4-49.2-10.9-96.7-39.9-133.9l13.7-37.7zm-269.4 83.9l-4.6 49.3c-6.1 10.3-12.2 20.9-18.2 31.4-13 9.6-27 19.4-40.5 28.9l39.6 22.9 38.3-13.9c37.3 28.7 84.6 43.6 133.4 39.8-21.1-44.7-57.7-78.3-101.4-96.1l-7-39.5z"></path></svg></span><span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Magic Missile</span><span style="font-size: 12px; color: #c3b6e0">3 darts · 1d4 + 1 force each · never misses</span></span>
+<span style="font-size: 12px; color: #c3b6e0; white-space: nowrap">Action · 36 m</span>
+</div>
+<div style="font-size: 13px; line-height: 1.5; color: #ddd2f2">Darts can split between targets. Each extra slot level adds one dart.</div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+<span class="lbl" style="color: #c3b6e0">Cast at</span>
+<button style="font: 600 13px Inter,sans-serif; color: #150f22; background: #b49ae8; border: 0; border-radius: 6px; height: 36px; padding: 0 12px; cursor: pointer">1st · 3 darts</button>
+<button style="font: 500 13px Inter,sans-serif; color: #e3d6fb; background: transparent; border: 1px solid #6a5a92; border-radius: 6px; height: 36px; padding: 0 12px; cursor: pointer">2nd · 4 darts</button>
+<button style="margin-left: auto; font: 600 13px ui-monospace,Menlo,monospace; color: #150f22; background: #d9b25c; border: 0; border-radius: 8px; height: 40px; padding: 0 14px; cursor: pointer">/cast magic_missile</button>
+</div>
+</div>
+
+<sc-for list="{{first}}" as="s" hint-placeholder-count="3">
+<button style="display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; text-align: left; font: 14px Inter,sans-serif; color: #eee9d8; background: #162920; border: 1px solid #284032; border-radius: 8px; padding: 8px 12px; cursor: pointer">
+<span aria-hidden="true" style="flex: 0 0 auto; width: 36px; height: 36px; border-radius: 8px; background: #241c36; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 512 512"><path fill="#b49ae8" d="{{s.icon}}"></path></svg></span><span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="display: flex; gap: 8px; align-items: center"><span style="font-weight: 600">{{s.name}}</span><sc-if value="{{s.tag}}" hint-placeholder-val="{{false}}"><span style="font-size: 10px; font-weight: 600; letter-spacing: .06em; color: #c9b8f2; border: 1px solid #5a4a80; border-radius: 4px; padding: 1px 5px">{{s.tag}}</span></sc-if></span><span style="font-size: 12px; color: #a5b8aa">{{s.effect}}</span></span>
+<span style="font-size: 12px; color: #a5b8aa; white-space: nowrap">{{s.meta}}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="lbl">2nd level</span>
+<sc-for list="{{second}}" as="s" hint-placeholder-count="2">
+<button style="display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; text-align: left; font: 14px Inter,sans-serif; color: #eee9d8; background: #162920; border: 1px solid #284032; border-radius: 8px; padding: 8px 12px; cursor: pointer">
+<span aria-hidden="true" style="flex: 0 0 auto; width: 36px; height: 36px; border-radius: 8px; background: #241c36; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 512 512"><path fill="#b49ae8" d="{{s.icon}}"></path></svg></span><span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">{{s.name}}</span><span style="font-size: 12px; color: #a5b8aa">{{s.effect}}</span></span>
+<span style="font-size: 12px; color: #a5b8aa; white-space: nowrap">{{s.meta}}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="font-size: 12px; color: #a5b8aa; line-height: 1.5; padding-top: 10px; border-top: 1px solid #284032">Click a spell to expand it. The command goes into the input with the chosen slot, then you add a target and any flavour after a comma.</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":760,"height":880}}'>
+class Component extends DCLogic {
+renderVals() {
+const I = {"fire-ray": "M12.195 20.94v39.128c76.452 73.026 151.387 152.574 187.47 215.5 12.6 21.978 38.114 72.972 49.056 118.557-31.424-3.388-64.762-14.633-96.36-33.873 11.605 19.025 25.57 37.838 42.632 54.898 83.895 83.897 200.548 103.142 260.473 43.217 59.927-59.927 40.678-176.574-43.22-260.47-17.062-17.063-35.872-31.028-54.895-42.633 21.316 35.01 33.27 71.947 35.04 106.29-47.3-13.436-103.76-38.565-127.316-51.976C201.59 173.434 121.32 98.073 47.818 20.938H12.195zM374.89 285.866c47.63 0 86.557 36.296 90.727 82.817-12.225-22.7-36.207-38.133-63.797-38.133-39.995 0-72.42 32.423-72.42 72.42 0 5.462.61 10.78 1.758 15.897 2.835-21.18 21.098-37.674 43.018-37.674 23.866 0 43.414 19.55 43.414 43.414 0 23.866-19.548 43.413-43.414 43.413-1.59 0-3.157-.093-4.703-.262.114.057.225.12.34.176-48.052-2.623-86.028-42.24-86.028-90.96 0-50.428 40.677-91.107 91.104-91.107z", "ice-bolt": "M18.094 18.125v43.53l76.156 9.407-29.97-52.937H18.095zm117.437 0l57 34.125-13.186-34.125H135.53zm121.22.156l-19.938 7.314 60.344 61.468-19.844-52.218L256.75 18.28zM114.812 35.188l18.97 59.157 58.155 25.625.22 63.56 36.75-8.28-33.5-92.938-80.595-47.124zm94.47 7.126l48.843 138.656 3.625-61.626 29.53-3.78-82-73.25zm118.655 6.562l-8.406 23.344 60.345 61.468L350.5 51.906l-22.563-3.03zm-285.5 42.75l54.657 47.5 4.094-44.875-58.75-2.625zm353.97 2.938l9.937 67.187-27.97 54.625 31.626-30 18.563-46.28-32.157-45.532zM18.093 106.78v67.5l21.843 11.97 62.657.28-84.5-79.75zm314.656 18.19l-6.594 6.624-40.78 40.75 13.218 13.22 24.812-24.814v28.22l-12.625 12.624 12.626 52.97v2.217l-31.094 17.94-2-1.158-39.5-37.343-17.218 4.593-24.438-14.094 33.875-9.064-4.843-18.062L182.53 214.5l-9.03 2.438 2.406 9.03 14.938 55.657 18.03-4.844-9.093-33.874 24.44 14.125 4.624 17.22 52.125 15.53 1.842 1.064v36.062l-1.843 1.063-52.126 15.53-4.625 17.22-24.44 14.124 9.095-33.875-18.063-4.845-14.906 55.688-2.406 9 9.03 2.437 55.657 14.906 4.844-18.062-33.874-9.063 24.438-14.124 17.22 4.625 39.56-37.405 1.845-1.063 31.186 18v2.125l-12.625 52.97 12.626 12.624V457l-24.812-24.813-13.22 13.22 40.782 40.75 6.594 6.624 6.594-6.624 40.78-40.75-13.218-13.22-24.812 24.814v-28.22l12.625-12.624-12.626-52.97v-2.28l31.03-17.937 2 1.155 39.563 37.406 17.22-4.624 24.437 14.125-33.875 9.064 4.842 18.062L483 403.25l9-2.438-2.406-9-14.906-55.687-18.063 4.844 9.094 33.874-24.44-14.125-4.624-17.22-52.125-15.53-2.155-1.25v-35.69l2.156-1.25 52.126-15.53 4.625-17.22 24.44-14.124-9.095 33.875 18.063 4.845 14.906-55.656 2.406-9.032-9-2.438-55.688-14.906-4.843 18.062 33.874 9.063-24.438 14.093-17.22-4.594-39.498 37.343-2.157 1.25-30.936-17.875v-2.375l12.625-52.97-12.626-12.624v-28.22l24.812 24.813 13.22-13.22-40.782-40.75-6.594-6.624zm-203.47 1.124l-17.56 35.156 46.843 33.97 14.062-53.876-43.344-15.25zm-66.874 76.25l56.657 85.844 40.562 13.218-14.72-80.5-14.624-14.625-18.31 15.814-49.564-19.75zm-23.468 28.594l-7.688 27.5 35.094 18.625 1.344-27.875-28.75-18.25zm293.656 42.093l31.094 17.94v35.874l-31.094 17.97-31.094-17.97V290.97l31.094-17.94zM93.5 304.47l31.906 56.905 32.78 7.28 11.44-39.405L93.5 304.47zm-25.75 53.624l16.094 46.72 66.72-8.127-82.814-38.593zm78.375 66.97L117 453.717l95.844-20.533-66.72-8.125z", "hand": "M309.752 35.514c-3.784.046-7.807.454-12.004 1.082-27.198 61.067-49.85 122.007-65.45 182.775-9.293-4.313-18.634-8.57-27.962-12.845-3.95-53.137 1.876-103.13 5.33-153.757-6.696-5.06-17.54-8.82-28.596-8.98-11.573-.166-22.304 3.33-28.537 9.513-5.44 70.22-5.258 147.354 1.133 217.475 21.926 29.733 45.877 59.903 52.305 103.64l-18.49 2.716c-4.24-28.837-17.583-51.34-33.238-73.51l-7.582-10.55c-5.01-6.862-10.134-13.79-15.185-20.945-21.397-28.51-44.094-51.49-62.155-59.22-9.81-4.196-17.273-4.385-24.632-.442-6.486 3.474-13.52 11.49-20.043 25.387 53.41 51.674 70.576 104.044 82.718 138.664 5.79 16.507 11.08 31.523 21.274 47.025 15.614 23.746 49.446 42.91 84.066 49.51 34.62 6.598 68.69.712 86.87-19.833 14.36-16.227 41.232-41.87 56.195-57.787 24.524-26.085 59.485-54.964 88.597-77.248 14.556-11.142 27.62-20.598 37.197-27.178 4.79-3.29 8.68-5.848 11.612-7.625.197-.12.34-.182.527-.294 1.31-9.873-.448-20.663-4.804-29.375-4.358-8.718-10.787-14.658-17.763-17.015-35.707 21.283-70.62 44.438-103.877 75.438-5.745-7.274-11.933-14.06-18.5-20.424 30.747-58.815 69.992-107.75 114.28-150.41-1.56-9.55-7.76-19.814-16.114-27.32-8.4-7.55-18.526-11.7-25.852-11.623-45.615 46.382-85.864 96.907-117.5 154.463-6.918-4.36-14.023-8.513-21.27-12.51 18.893-64.715 42.99-126.426 73.5-184.392-12.757-15.245-25.477-23.335-42.347-24.324-1.205-.07-2.44-.096-3.7-.08z", "magic-shield": "M57.78 23.135c-1.517 29.085-2.193 55.608-2.266 80.316 6.56-2.716 13.703-4.333 21.228-4.333 31.245 0 56.883 25.64 56.883 56.887 0 31.246-25.777 56.3-56.883 56.3-6.068 0-11.95-1.003-17.488-2.77C71.906 332.82 108.064 376.35 147.668 401.9c20.677 13.34 42.986 21.7 64.268 33.245 17.444 9.463 34.177 21.525 47.42 40.127 13.23-18.597 29.925-30.658 47.324-40.122 21.226-11.545 43.46-19.904 64.064-33.242 39.46-25.543 75.488-69.07 88.135-192.324-5.32 1.708-10.974 2.723-16.907 2.723-31.107 0-56.88-25.058-56.88-56.3 0-31.244 25.634-56.888 56.88-56.888 7.63 0 14.745 1.697 21.23 4.508-.07-24.757-.745-51.334-2.265-80.49-59.488 13-130.78 19.266-201.5 19.888h-.163c-70.718-.62-142.008-6.888-201.496-19.888zm304.124 39.32l-27.117 93.18-17.945-5.22 11.504-39.532-85.116 63.646-11.19-14.97 129.864-97.105zm-205.394 1.01l81.732 59.512-11 15.107-34.338-25.004 34.79 103.514-17.714 5.955-53.47-159.085zm140.486 99.652l129.383 97.95-98.25-.48.09-18.69 42.15.208-84.653-64.087 11.28-14.9zm-122.357 37.71l10.83 15.228-36.206 25.754 104.898-.17.03 18.69-163.577.262 84.024-59.766zm117.79 21l17.806 5.675-49.39 155.008-31.248-96.46 17.777-5.76 13.324 41.124 31.73-99.586z", "sleepy": "M249.094 18.25c-42.675 0-81.852 25.486-110.938 68.438C109.07 129.637 90.72 189.74 90.72 256.28c0 66.543 18.35 126.643 47.436 169.595s68.263 68.47 110.938 68.47 81.883-25.518 110.97-68.47c29.084-42.952 47.436-103.052 47.436-169.594 0-66.54-18.352-126.64-47.438-169.592C330.978 43.736 291.77 18.25 249.094 18.25zm-128.97 241.313c18.356 18.096 37.528 26.765 55.72 27.562 18.19.797 35.927-6.096 52.125-21.5l12.874 13.53c-19.214 18.274-42.25 27.658-65.813 26.626-23.56-1.03-47.1-12.3-68-32.905l13.095-13.313zm264.782 0l13.125 13.312C377.135 293.48 353.564 304.75 330 305.78c-23.563 1.033-46.598-8.35-65.813-26.624l12.875-13.53c16.2 15.403 33.934 22.296 52.125 21.5 18.192-.798 37.365-9.467 55.72-27.563zM251.562 371.656c36.423-.156 72.996 19.144 77.438 58.406-51.33 13.296-102.67 12.767-154 0 3.858-38.638 40.14-58.25 76.563-58.406z", "fire-breath": "M19.563 17.5l1.718 345.656c15.677 8.52 35.932 6.66 49.75-1.625 7.5-4.494 12.795-10.567 14.97-17.03 2.175-6.463 1.855-13.602-3.625-22.688-58.988-97.785-45.843-189.42 5.688-240.843 51.53-51.424 140.25-61.073 224.687-1.626 13.64 9.602 20.366 9.61 24.594 7.656 4.227-1.954 8.902-8.547 12.594-18.72 3.69-10.17 6.408-22.988 9.312-34.81 1.32-5.38 2.57-10.488 4.156-15.282L19.562 17.5zm172.625 39.28c-4.418.057-8.753.3-13.032.75l98.97 66.69 16.53-34.595c-35.624-23.28-70.743-33.247-102.47-32.844zm-65.72 17.94c-9.217 5.424-17.68 11.976-25.218 19.5-12.852 12.824-23.157 28.612-30 46.78 71.867 74.02 173.938 182.317 76.313 160.344 30.6 28.633 137.543 49.855 149.593 98.094 10.005 40.048-25.533 71.875-55.78 71.875-40.617 0-82.835-32.52-44.876-70.157-24.106 4.008-35.584 21.004-36.22 40.25-.633 19.247 9.704 40.793 29.345 54.063h303.03V170c-7.068-59.46-121.172-84.22-119.03 3.47 23.285-55.158 65.423 9.63 52.906 56.343-9.737 36.35-42.167 58.896-88.31 29.218-106.057-68.21-78.403-101.62-132.126-157.342 17.683 74.736-32.005 32.17-79.625-26.97zM61.845 195c.08 32.478 9.46 69.05 31.093 107.844l22.126-13.125L61.843 195z", "eye-target": "M256 105c-60.25 0-124.749 38.39-167.945 77.66-34.931 31.756-58.722 62.36-66.88 73.34 8.158 10.98 31.949 41.584 66.88 73.34C131.25 368.61 195.75 407 256 407s124.749-38.39 167.945-77.66c34.931-31.756 58.722-62.36 66.88-73.34-8.158-10.98-31.949-41.584-66.88-73.34C380.75 143.39 316.25 105 256 105zm0 23a128 128 0 0 1 63.486 16.969A48 48 0 0 0 288 190a48 48 0 0 0 .023.453A72.362 72.362 0 0 0 265 183.576V160h-18v23.576c-33.034 4.095-59.33 30.39-63.424 63.424H160v18h23.576c4.095 33.034 30.39 59.33 63.424 63.424V352h18v-23.576c33.034-4.095 59.33-30.39 63.424-63.424H352v-18h-23.576a72.33 72.33 0 0 0-1.98-10.014A48 48 0 0 0 336 238a48 48 0 0 0 41.023-23.195A128 128 0 0 1 384 256a128 128 0 0 1-128 128 128 128 0 0 1-128-128 128 128 0 0 1 128-128zm-9 73.738V224h18v-22.262c23.237 3.792 41.47 22.025 45.262 45.262H288v18h22.262c-3.792 23.237-22.025 41.47-45.262 45.262V288h-18v22.262c-23.237-3.792-41.47-22.025-45.262-45.262H224v-18h-22.262c3.792-23.237 22.025-41.47 45.262-45.262z", "teleport": "M249.334 22.717c-18.64 2.424-35.677 23.574-37.043 51.49v.02c-.057 1.186-.097 2.38-.097 3.59 0 16.362 5.658 30.827 13.942 40.818l10.127 12.213-15.592 2.933c-10.75 2.025-18.622 7.702-25.373 16.978-2.285 3.14-4.384 6.707-6.31 10.62-57.54-6.44-97.91-21.06-97.91-37.952 0-17.363 42.647-31.983 102.75-37.97-.213-2.51-.323-5.057-.323-7.636v-.002c0-.84.024-1.674.047-2.51-96.43 6.77-167.298 29.15-167.3 55.71-.002 25.33 64.462 46.86 154.074 54.67-.19.742-.394 1.465-.576 2.216-2.36 9.72-4.05 20.22-5.268 31.03-.01 0-.02 0-.03.002-.418 3.653-.78 7.34-1.095 11.046l.05-.005c-1.316 15.777-1.772 31.88-1.893 46.95h35.894l2.115 28.4c-68.24-4.994-118.444-21.004-118.444-39.843 0-13.243 24.83-24.89 63.27-32.33.3-4.056.66-8.115 1.076-12.162-76.42 9.353-129.17 29.168-129.172 52.086-.002 28.17 79.71 51.643 185.098 56.768l5.94 79.77c10.5 2.648 24.84 4.162 39.017 4.068 13.79-.092 27.235-1.71 36.45-4l5.263-79.846c105.308-5.14 184.935-28.605 184.935-56.76 0-23.013-53.196-42.895-130.13-52.2.304 4.02.557 8.047.755 12.07 38.883 7.43 63.965 19.17 63.965 32.536 0 18.84-49.804 34.85-117.908 39.844l1.87-28.402h34.18c-.012-15.113-.127-31.27-1.033-47.094.01 0 .02.002.032.004-.214-3.687-.472-7.352-.782-10.986l-.02-.002c-.94-11.157-2.367-21.984-4.546-31.967-.09-.405-.184-.803-.275-1.206 89.518-7.826 153.893-29.344 153.893-54.656 0-26.787-72.076-49.332-169.77-55.887.025.895.053 1.788.053 2.688 0 2.5-.104 4.97-.304 7.407 61.19 5.836 104.61 20.61 104.61 38.2 0 16.805-39.633 31.355-96.524 37.848-2.01-4.283-4.26-8.15-6.762-11.505-6.83-9.167-15.063-14.81-27.14-16.682l-15.913-2.47 10.037-12.59c6.928-8.69 11.912-20.715 13.057-34.268h.002c.163-1.95.25-3.93.25-5.938 0-.77-.022-1.532-.048-2.29-.015-.48-.033-.958-.057-1.434h-.002c-1.48-29.745-20.507-51.3-41.076-51.3-2.528 0-3.966-.087-4.03-.08h-.003zM194.54 355.822c-97.11 6.655-168.573 29.11-168.573 55.8 0 31.932 102.243 57.815 228.367 57.815S482.7 443.555 482.7 411.623c0-26.608-71.02-49.004-167.67-55.736l-.655 9.93c60.363 6.055 103.074 20.956 103.074 38.394 0 22.81-73.032 41.298-163.12 41.298-90.088 0-163.12-18.49-163.12-41.297 0-17.533 43.18-32.502 104.07-38.493l-.74-9.895z", "laser-burst": "M291.17 299.252l109.093 150.173-21.76 15.786-109.07-150.16v72.135h-26.865V315.05l-109.07 150.16-21.74-15.795 109.07-150.163-68.6 22.287-8.307-25.555 68.602-22.287L36 216.348l8.307-25.565 176.533 57.362-42.404-58.36 21.686-15.776 42.446 58.36V46.79h26.864v185.58l42.446-58.36 21.74 15.795-42.404 58.36 176.48-57.382L476 216.337 299.467 273.71l68.602 22.286-8.308 25.554z"};
+return {
+cantrips: [
+{ name: 'Fire Bolt', icon: I['fire-ray'], effect: 'Spell attack · 1d10 fire · sets objects alight', meta: 'Action · 36 m' },
+{ name: 'Ray of Frost', icon: I['ice-bolt'], effect: 'Spell attack · 1d8 cold · target slowed 3 m', meta: 'Action · 18 m' },
+{ name: 'Mage Hand', icon: I['hand'], effect: 'Spectral hand moves objects up to 5 kg', meta: 'Action · 9 m' }
+],
+first: [
+{ name: 'Shield', icon: I['magic-shield'], tag: 'REACTION', effect: '+5 AC until your next turn · when you are hit', meta: 'Reaction · self' },
+{ name: 'Sleep', icon: I['sleepy'], tag: '', effect: '5d8 hit points of creatures fall asleep', meta: 'Action · 27 m' },
+{ name: 'Burning Hands', icon: I['fire-breath'], tag: '', effect: '3d6 fire · DEX save halves', meta: 'Action · 4.5 m cone' },
+{ name: 'Detect Magic', icon: I['eye-target'], tag: 'RITUAL', effect: 'Sense magic nearby · concentration', meta: 'Action · 9 m' }
+],
+second: [
+{ name: 'Misty Step', icon: I['teleport'], effect: 'Teleport to a spot you can see', meta: 'Bonus · 9 m' },
+{ name: 'Scorching Ray', icon: I['laser-burst'], effect: '3 rays · spell attack · 2d6 fire each', meta: 'Action · 36 m' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

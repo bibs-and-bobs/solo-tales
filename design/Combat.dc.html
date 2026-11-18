@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Combat screen</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600&amp;family=Spectral:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b1410}
+a{color:#d9b25c}a:hover{color:#ecc978}
+.lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a5b8aa;font-weight:600}
+.panel{background:#112019;border:1px solid #1c3026;border-radius:10px}
+.cmd{font:600 13px ui-monospace,Menlo,monospace;color:#ecc978;background:#2b2017;border:1px solid #5a4526;border-radius:8px;height:40px;padding:0 12px;cursor:pointer;white-space:nowrap}
+.cmd2{font:600 13px ui-monospace,Menlo,monospace;color:#cbd7cd;background:#1c3127;border:1px solid #335040;border-radius:8px;height:40px;padding:0 12px;cursor:pointer;white-space:nowrap}
+.tab{font:500 13px Inter,sans-serif;background:transparent;border:0;color:#a5b8aa;padding:12px 2px;cursor:pointer}
+.act{font:600 14px Inter,sans-serif;color:#eee9d8;background:#1c3127;border:1px solid #335040;border-radius:8px;min-height:48px;padding:0 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+</style>
+</helmet>
+<div style="min-height: 960px; display: flex; flex-direction: column; background: #0b1410; color: #eee9d8; font-family: Inter, system-ui, sans-serif; font-size: 14px">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 24px; border-bottom: 1px solid #4a2723; background: #1c1412">
+<div style="display: flex; align-items: center; gap: 14px">
+<div style="font-family: Spectral, serif; font-size: 20px; font-weight: 600">Under the Mill</div>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #f0b3aa; background: #3a1f1b; border: 1px solid #6a332c; border-radius: 6px; padding: 4px 10px">Combat · Round 2</span>
+</div>
+<div style="display: flex; align-items: center; gap: 6px; color: #8fbf8a; font-size: 12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Saved</div>
+</header>
+
+<div style="display: flex; gap: 8px; padding: 14px 24px; overflow-x: auto; border-bottom: 1px solid #1f3529">
+<span class="lbl" style="align-self: center; margin-right: 6px">Initiative</span>
+<sc-for list="{{order}}" as="o" hint-placeholder-count="4">
+<div style="{{o.style}}">
+<span style="font-size: 12px; color: #a5b8aa">{{o.init}}</span>
+<span style="font-weight: 600">{{o.name}}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="flex: 1; display: flex; flex-wrap: wrap; gap: 16px; padding: 16px 24px 24px">
+
+<aside class="panel" style="flex: 1 0 250px; max-width: 280px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
+<div>
+<div style="font-family: Spectral, serif; font-size: 20px; font-weight: 600">Edda Vane</div>
+<div style="color: #a5b8aa; font-size: 13px">Fighter 3 · your turn</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between"><span class="lbl">Hit points</span><span style="font-weight: 600">17 / 28</span></div>
+<div style="height: 10px; background: #22382c; border-radius: 6px; overflow: hidden"><div style="width: 61%; height: 100%; background: #c9554b"></div></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<div style="background: #1c3127; border-radius: 8px; padding: 10px; text-align: center"><div class="lbl">AC</div><div style="font-size: 20px; font-weight: 600">16</div></div>
+<div style="background: #1c3127; border-radius: 8px; padding: 10px; text-align: center"><div class="lbl">Speed</div><div style="font-size: 20px; font-weight: 600">9 m</div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span class="lbl">This turn</span>
+<div style="display: flex; justify-content: space-between"><span>Action</span><span style="color: #d9b25c">Available</span></div>
+<div style="display: flex; justify-content: space-between"><span>Bonus action</span><span style="color: #d9b25c">Available</span></div>
+<div style="display: flex; justify-content: space-between"><span>Movement</span><span style="color: #a5b8aa">6 / 9 m left</span></div>
+<div style="display: flex; justify-content: space-between"><span>Reaction</span><span style="color: #a5b8aa">Used</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid #284032">
+<span class="lbl">Conditions</span>
+<span style="color: #a5b8aa; font-size: 13px">None</span>
+</div>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; overflow: hidden; background: #2a1d18; border: 1px solid #7a3a30; border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,.55), 0 0 0 4px rgba(201,85,75,.08)">
+<div style="padding: 22px 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{enemies}}" as="e" hint-placeholder-count="3">
+<button style="{{e.style}}">
+<span style="display: flex; justify-content: space-between; align-items: center; width: 100%">
+<span style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: 0 0 auto; width: 34px; height: 34px; border-radius: 8px; background: #3a1915; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 512 512"><path fill="#f0928a" d="{{e.icon}}"></path></svg></span><span style="font-weight: 600; font-size: 15px">{{e.name}}</span></span>
+<span style="font-size: 12px; color: #a5b8aa">{{e.dist}}</span>
+</span>
+<span style="font-size: 12px; font-weight: 600; color: {{e.stateColor}}">{{e.state}}</span>
+<span style="font-size: 12px; color: #a5b8aa">{{e.note}}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="flex: 1; padding: 4px 40px 20px; display: flex; flex-direction: column; gap: 12px; max-width: 760px; width: 100%; box-sizing: border-box; margin: 0 auto">
+<span class="lbl">Round 1</span>
+<p style="margin: 0; font-family: Spectral, serif; font-size: 17px; line-height: 1.6; color: #c5d1c6">Three goblins scramble out of the dark as your boots hit the cellar floor. The largest one grins and hefts a rusted cleaver.</p>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #a5b8aa">
+<div>You hit Goblin A with Longsword · 8 slashing</div>
+<div>Goblin B hits you with Scimitar · 5 slashing</div>
+<div>Goblin Boss misses you</div>
+</div>
+<span class="lbl" style="margin-top: 8px">Round 2</span>
+<p style="margin: 0; font-family: Spectral, serif; font-size: 17px; line-height: 1.6; color: #f5eedd">Goblin A staggers back clutching its side. The boss slams its cleaver against your shield.</p>
+<div style="display: flex; justify-content: center; padding: 4px 0"><div style="font-family: Anton, Impact, sans-serif; font-size: 56px; line-height: 1; letter-spacing: .06em; color: #ffd166; transform: rotate(3deg); text-shadow: 0 0 22px rgba(255,200,80,.4), 3px 3px 0 #5a4212">CLANG</div></div>
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<div aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%; background: #4a1f1a; border: 2px solid #e0705f; display: flex; align-items: center; justify-content: center; font-family: Spectral, serif; font-weight: 600; font-size: 18px; color: #ffd9d2">G</div>
+<div style="display: flex; flex-direction: column; gap: 4px; max-width: 85%">
+<div style="font-size: 12px; font-weight: 600; color: #f0928a">Goblin Boss</div>
+<div style="background: #3a1915; border: 1px solid #7a3a30; border-radius: 2px 14px 14px 14px; padding: 12px 16px; font-family: Spectral, serif; font-style: italic; font-size: 19px; line-height: 1.55; color: #ffe8e3">“Tall one bleeds same as small ones. Hold her!”</div>
+</div>
+</div>
+
+<div style="align-self: flex-end; max-width: 80%; background: #3b3a22; border: 1px solid #6a5530; border-radius: 12px 12px 2px 12px; padding: 10px 14px; font-size: 14px; line-height: 1.5">I kick the burning brazier into the boss and swing while it's blinded.</div>
+
+<div style="background: #2a2715; border: 1px solid #8a7235; border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; margin-top: 4px">
+<div style="display: flex; align-items: center; gap: 8px"><span style="font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #1a160e; background: #e0b85a; border-radius: 4px; padding: 3px 8px">Creative action</span><span style="color: #d2c08e; font-size: 13px">Narrator's ruling, checked by the rules</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><span>1 · Kick the brazier</span><span style="color: #d2c08e">Athletics check · bonus action</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #d2c08e">On success</span><span>1d6 fire · boss blinded until your next turn</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span>2 · Swing while it's blinded</span><span style="color: #d2c08e">Longsword attack · advantage</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end">
+<button style="font: 500 13px Inter,sans-serif; color: #e2d6b0; background: transparent; border: 1px solid #6a5a2a; border-radius: 8px; height: 44px; padding: 0 16px; cursor: pointer">Change plan</button>
+<button style="font: 600 14px Inter,sans-serif; color: #1a160e; background: #e0b85a; border: 0; border-radius: 8px; height: 44px; padding: 0 20px; cursor: pointer">Roll Athletics</button>
+</div>
+</div>
+</div>
+
+<div style="border-top: 1px solid #5a2e27; background: #1f1512; padding: 14px 24px 18px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<button class="cmd">/attack</button>
+<button class="cmd">/cast</button>
+<button class="cmd">/second_wind</button>
+<button class="cmd">/action_surge</button>
+<button class="cmd">/item</button>
+<button class="cmd2">/dodge</button>
+<button class="cmd2">/dash</button>
+<button class="cmd2">/shove</button>
+<button class="cmd2">/grapple</button>
+<button class="cmd2">/end</button>
+</div>
+<div style="position: relative">
+<div style="position: absolute; left: 0; bottom: 54px; width: 320px; background: #1b1714; border: 1px solid #4a3d25; border-radius: 10px; box-shadow: 0 16px 40px rgba(0,0,0,.6); padding: 6px; display: flex; flex-direction: column">
+<div class="lbl" style="padding: 6px 10px 4px">Target</div>
+<div style="display: flex; justify-content: space-between; padding: 8px 10px; border-radius: 6px; background: #2b2416"><span style="font-weight: 600">Goblin Boss</span><span style="color: #a5b8aa; font-size: 12px">1.5 m · Unhurt</span></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 10px"><span>Goblin A</span><span style="color: #a5b8aa; font-size: 12px">1.5 m · Near death</span></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 10px"><span style="color: #a5b8aa">Goblin B</span><span style="color: #a5b8aa; font-size: 12px">3 m · out of reach</span></div>
+</div>
+<div style="display: flex; gap: 10px">
+<label for="cmdin" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Your action</label>
+<input id="cmdin" value="/attack go" style="flex: 1; min-width: 0; font: 15px ui-monospace,Menlo,monospace; color: #ecc978; background: #0a120e; border: 1px solid #d9b25c; border-radius: 8px; padding: 0 14px; height: 46px">
+<button style="font: 600 14px Inter,sans-serif; color: #1a160e; background: #d9b25c; border: 0; border-radius: 8px; padding: 0 20px; cursor: pointer">Send</button>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 12px; color: #a5b8aa">
+<span>Commands go straight to the rules. Anything after a comma is flavour: <span style="font-family: ui-monospace,Menlo,monospace; color: #cbd7cd">/attack boss, low under its guard</span></span>
+<span>Plain text = creative action or story</span>
+</div>
+</div>
+</main>
+
+<aside class="panel" style="flex: 1 0 280px; max-width: 330px; display: flex; flex-direction: column">
+<nav style="display: flex; gap: 14px; padding: 0 18px; border-bottom: 1px solid #284032">
+<button class="tab" style="color: #eee9d8; box-shadow: inset 0 -2px 0 #d9b25c">Abilities</button>
+<button class="tab">Spells</button>
+<button class="tab">Items</button>
+<button class="tab">Target</button>
+</nav>
+<div style="padding: 16px 18px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="lbl">Class features</span>
+<sc-for list="{{feats}}" as="f" hint-placeholder-count="2">
+<button style="display: flex; flex-direction: column; align-items: flex-start; gap: 3px; width: 100%; text-align: left; font: 14px Inter,sans-serif; color: #eee9d8; background: #162920; border: 1px solid #284032; border-radius: 8px; padding: 10px 12px; cursor: pointer">
+<span style="display: flex; justify-content: space-between; width: 100%"><span style="font-weight: 600">{{f.name}}</span><span style="font-family: ui-monospace,Menlo,monospace; font-size: 12px; color: #c9ad6f">{{f.cmd}}</span></span>
+<span style="font-size: 12px; color: #a5b8aa">{{f.note}}</span>
+</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="lbl">Any creature can</span>
+<sc-for list="{{basics}}" as="b" hint-placeholder-count="4">
+<button style="display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 40px; text-align: left; font: 13px Inter,sans-serif; color: #cbd7cd; background: transparent; border: 1px solid #22382c; border-radius: 8px; padding: 6px 12px; cursor: pointer">
+<span>{{b.name}}</span><span style="font-family: ui-monospace,Menlo,monospace; font-size: 12px; color: #d9c48a">{{b.cmd}}</span>
+</button>
+</sc-for>
+</div>
+<div style="font-size: 12px; color: #a5b8aa; line-height: 1.5; padding-top: 12px; border-top: 1px solid #284032">Click any entry to put its command in the input. Spells tab shows prepared spells and slots for caster classes.</div>
+</div>
+</aside>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":960}}'>
+class Component extends DCLogic {
+renderVals() {
+const I = {"goblin-head": "M256 33c-8.5 0-21.318 5.745-35.06 16.17-13.743 10.425-28.429 25.055-42.167 40.756-19.597 22.397-37.26 47.053-48.41 64.597l49.582 37.188 49.23 12.307 2.288-6.864 17.074 5.692-14.957 44.873 22.42 56.05 22.42-56.05-14.957-44.873 17.074-5.692 2.287 6.864 49.23-12.307 49.583-37.188c-11.15-17.544-28.813-42.2-48.41-64.597-13.738-15.7-28.424-30.33-42.166-40.756C277.318 38.745 264.5 33 256 33zm-91.49 95.213l76 44-9.02 15.574-76-44zm182.98 0l9.02 15.574-76 44-9.02-15.574zM17.21 146.625c31.804 32.973 63.213 73.408 76.3 111.857 1.59-2.708 3.38-5.333 5.292-7.882 5.009-6.68 11.036-12.972 17.14-19.153-8.95-12.884-11.752-29.088-12.605-42.886-29.308-24.142-53.916-37.693-86.127-41.936zm477.582 0c-32.21 4.243-56.819 17.794-86.127 41.936-.853 13.798-3.654 30.002-12.605 42.886 6.104 6.181 12.131 12.474 17.14 19.153 1.912 2.55 3.703 5.174 5.291 7.882 13.088-38.449 44.497-78.884 76.301-111.857zm-373.645 23.484c-.023.045-.054.1-.078.145.137 16.376 2.007 44.095 13.295 55.383l6.364 6.363-6.364 6.363c-8 8-15.74 15.805-21.164 23.037-4.688 6.251-7.327 11.823-7.965 16.452l81.118 30.418c4.7-6.847 9.904-13.253 15.285-18.633l16.029-16.03-.67 22.659c-.25 8.431-.383 16.131-.232 23.41l30.84 11.564L214.707 249h-50.98l-13.364 13.363-12.726-12.726 11.312-11.313-13.531-57.512zm269.708 0l-14.272 10.703-13.531 57.512 11.312 11.313-12.726 12.726L348.273 249h-50.98l-32.897 82.24 30.842-11.566c.15-7.278.018-14.978-.232-23.408l-.672-22.659 16.03 16.03c5.38 5.38 10.584 11.788 15.284 18.634l55.192-20.697 25.926-9.722c-.638-4.63-3.277-10.2-7.965-16.452-5.424-7.232-13.164-15.037-21.164-23.037L371.273 232l6.364-6.363c11.288-11.288 13.158-39.007 13.295-55.383-.024-.045-.055-.1-.078-.145zM157.867 197.65l7.848 33.35H183v-19.975l-10.945-2.736zm196.266 0l-14.188 10.64L329 211.024V231h17.285zM201 215.525V231h19.18l3.287-9.857zm110 0l-22.467 5.618L291.82 231H311zm-205.791 62.51a16.25 16.25 0 0 0-.117 1.256c7.79 37.424 34.985 88.461 66.066 129.256 15.682 20.582 32.34 38.649 47.582 51.271C233.983 472.441 248 479 256 479c8 0 22.017-6.559 37.26-19.182 15.242-12.622 31.9-30.689 47.582-51.271 31.081-40.795 58.277-91.832 66.066-129.256-.02-.41-.063-.83-.117-1.256l-48.027 72.043L256 435.715l-102.764-85.637zm45.756 36.188l15.799 23.699 2.968 2.474c1.753-5.409 4.259-10.906 7.176-16.445zm210.07 0l-25.943 9.728c2.917 5.539 5.423 11.036 7.176 16.445l2.968-2.474zm-162.129 7.73c-1.782 2.76-3.48 5.558-5.006 8.356-4.27 7.83-7.176 15.717-8.328 21.255l19.67 13.114c-4.116-14.232-5.864-28.048-6.336-42.725zm114.188 0c-.472 14.677-2.22 28.493-6.336 42.725l19.67-13.114c-1.152-5.538-4.057-13.425-8.328-21.255-1.527-2.798-3.224-5.596-5.006-8.356zm-19.227 17.457L265 350.236v54.55l7.793-6.495 7.158-14.316c8.04-16.081 12.051-29.95 13.916-44.565zm-75.734.002c1.864 14.614 5.876 28.483 13.916 44.563l7.158 14.316 7.793 6.494v-54.549z", "orc-head": "M256 51c-1.216 1.157-3.235 3.694-5.595 7.47-4.552 7.283-10.594 19.233-18.383 34.8v9.94c6.19 4.752 14.906 7.626 23.978 7.626 9.072 0 17.787-2.874 23.978-7.627v-9.94c-7.79-15.567-13.83-27.517-18.383-34.8-2.36-3.776-4.38-6.313-5.595-7.47zm-42.743 54.286c-28.17 6.895-55.87 20.62-82.175 41.132-16.04 80.706-31.2 175.83-16.89 254.565 6.188 2.322 12.687 4.44 19.403 6.398l-3.062-12.257-4.305-6.455 7.807-5.204c6.304-4.203 13.54-7.85 21.487-10.99-5.028-6.777-8.326-15.44-11.545-24.286-5.46-15.013-9.66-31.84-13.654-44.028l-9.792-29.87 24.565 19.616c24.47 19.543 49.132 32.704 82.918 56.314l10.07 7.037c5.944-.26 11.928-.39 17.917-.39 5.99 0 11.973.13 17.916.39l10.07-7.037c33.787-23.61 58.45-36.77 82.92-56.314l24.563-19.616-9.793 29.87c-3.995 12.19-8.193 29.015-13.654 44.028-3.22 8.847-6.517 17.51-11.545 24.287 7.948 3.138 15.183 6.786 21.487 10.99l7.807 5.203-4.305 6.455-3.062 12.258c6.716-1.956 13.215-4.075 19.402-6.397 14.31-78.736-.85-173.86-16.89-254.565-26.305-20.51-54.004-34.237-82.174-41.132v6.31l-2.75 2.746c-10.55 10.552-25.398 15.26-39.993 15.26-14.595 0-29.442-4.708-39.994-15.26l-2.75-2.746v-6.31zm75.98 55.876l13.39 13.145-6.572 6.695c-12.91 13.147-27.168 19.604-41.277 18.865-14.108-.74-26.793-8.077-38.39-18.442l-6.995-6.253 12.504-13.99 6.996 6.25c9.774 8.735 18.788 13.273 26.867 13.696 8.08.423 16.495-2.67 26.905-13.272l6.573-6.694zm-149.998 3.885c19.807 0 41.364 9.12 60.852 19.946 19.487 10.826 36.416 23.397 45.862 32.843l-13.268 13.267c-7.234-7.234-23.665-19.683-41.708-29.707-18.043-10.024-38.186-17.584-51.74-17.584v-18.765zm233.52 0v18.765c-13.552 0-33.695 7.56-51.738 17.584-18.043 10.024-34.474 22.473-41.708 29.707l-13.268-13.267c9.446-9.446 26.375-22.017 45.862-32.843 19.488-10.827 41.045-19.946 60.853-19.946zm-226.887 36.11c16.68 16.68 47.577 47.29 93.447 47.29v.316l16.757-24.214 16.603 24.475v-.578c45.87 0 76.767-30.61 93.447-47.29l13.268 13.266c-8.234 8.233-21.14 21.197-38.61 32.218 4.916 4.755 7.998 11.397 7.998 18.697 0 14.283-11.78 26.063-26.063 26.063-14.282 0-26.062-11.78-26.062-26.063 0-.183.01-.364.014-.546-3.9.798-7.922 1.415-12.06 1.828l28.074 41.386-3.79 5.315c-7.152 10.026-16.657 15.68-26.033 18.204-9.376 2.525-18.523 2.41-26.863 2.41s-17.496.107-26.944-2.4-19.065-8.05-26.67-17.95l-4.17-5.425 28.773-41.58c-4-.41-7.887-1.017-11.662-1.79.004.183.014.364.014.547 0 14.283-11.78 26.063-26.062 26.063-14.283 0-26.063-11.78-26.063-26.063 0-7.3 3.082-13.942 7.998-18.696-17.47-11.02-30.376-23.984-38.61-32.217l13.268-13.267zm-128.076 16.11c2.95 6.932 8.367 15.73 16.54 27.413 12.455 17.8 29.556 41.635 46.575 75.674 1.848 3.697 4.587 6.08 8.64 7.774.07-13.807.677-27.726 1.7-41.656l-24.876-21.55 12.286-14.184 14.638 12.68c.938-9.016 2.026-18.007 3.23-26.948-7.94-6.23-17.723-10.416-28.564-13.373-16.628-4.535-34.943-5.58-50.17-5.83zm476.406 0c-15.226.25-33.54 1.295-50.17 5.83-10.84 2.957-20.623 7.142-28.562 13.373 1.204 8.94 2.292 17.932 3.23 26.947l14.638-12.68 12.286 14.185-24.875 21.55c1.02 13.93 1.628 27.848 1.7 41.656 4.05-1.694 6.79-4.077 8.638-7.774 17.02-34.04 34.12-57.873 46.575-75.674 8.173-11.682 13.59-20.48 16.54-27.412zm-238.28 40.48L221.81 307.04c3.74 3.347 7.608 5.175 12.06 6.356 6.265 1.663 13.79 1.772 22.13 1.772s15.874-.117 21.982-1.762c4.345-1.17 8.01-2.94 11.476-6.216l-33.535-49.442zm-66.643.292c-4.142 0-7.298 3.155-7.298 7.297 0 4.14 3.156 7.297 7.298 7.297 4.14 0 7.297-3.156 7.297-7.297 0-4.142-3.156-7.298-7.297-7.298zm133.44 0c-4.14 0-7.297 3.155-7.297 7.297 0 4.14 3.156 7.297 7.297 7.297 4.142 0 7.298-3.156 7.298-7.297 0-4.142-3.156-7.298-7.298-7.298zm-166.322 67.34c1.684 5.604 3.355 11.28 5.214 16.392 4.053 11.14 9.25 19.18 12.498 22.424l27.458-9.153c-16.38-10.857-31.114-20.08-45.17-29.662zm199.204 0c-14.056 9.583-28.79 18.806-45.17 29.663l27.458 9.153c3.247-3.245 8.445-11.283 12.498-22.424 1.86-5.112 3.53-10.788 5.214-16.39zM256 375.634c-41.212 0-82.64 7.558-105.97 20.12l13.58 54.32c61.668 14.57 123.112 14.57 184.78 0l13.58-54.32c-23.33-12.562-64.758-20.12-105.97-20.12zm-.018 10.543c23.4-.08 46.826 4.167 70.074 13.005l8.77 3.334-6.67 17.542-8.77-3.336c-42.466-16.144-84.223-15.572-126.88.04l-8.814 3.226-6.448-17.623 8.81-3.223c23.152-8.473 46.527-12.883 69.928-12.964z"};
+const base = 'display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;white-space:nowrap;';
+const active = base + 'background:#3a2d14;border:1px solid #d9b25c;';
+const idle = base + 'background:#192d23;border:1px solid #284032;';
+const card = 'display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;font:14px Inter,sans-serif;color:#eee9d8;border-radius:10px;padding:14px;cursor:pointer;min-height:96px;';
+return {
+feats: [
+{ name: 'Second Wind', cmd: '/second_wind', note: 'Bonus action · heal 1d10 + 3 · 1 use left' },
+{ name: 'Action Surge', cmd: '/action_surge', note: 'One extra action this turn · used' },
+{ name: 'Improved Critical', cmd: 'passive', note: 'Your attacks crit on 19 or 20' }
+],
+basics: [
+{ name: 'Dodge', cmd: '/dodge' },
+{ name: 'Dash', cmd: '/dash' },
+{ name: 'Disengage', cmd: '/disengage' },
+{ name: 'Shove or trip', cmd: '/shove' },
+{ name: 'Grapple', cmd: '/grapple' },
+{ name: 'Use the environment', cmd: 'free text' }
+],
+order: [
+{ init: '19', name: 'Edda (you)', style: active },
+{ init: '15', name: 'Goblin B', style: idle },
+{ init: '12', name: 'Goblin Boss', style: idle },
+{ init: '8', name: 'Goblin A', style: idle }
+],
+enemies: [
+{ name: 'Goblin A', icon: I['goblin-head'], dist: '1.5 m', state: 'Near death', stateColor: '#f0928a', note: 'Shaken', style: card + 'background:#192d23;border:1px solid #284032;' },
+{ name: 'Goblin B', icon: I['goblin-head'], dist: '3 m', state: 'Unhurt', stateColor: '#cbd7cd', note: 'Shortbow ready', style: card + 'background:#192d23;border:1px solid #284032;' },
+{ name: 'Goblin Boss', icon: I['orc-head'], dist: '1.5 m', state: 'Unhurt', stateColor: '#cbd7cd', note: 'Targeted', style: card + 'background:#2b2416;border:2px solid #d9b25c;' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

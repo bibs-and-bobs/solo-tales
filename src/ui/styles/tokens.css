@@ -1,0 +1,131 @@
+/* Solo Tales Semantic Design Tokens — Default Theme: Illuminated Broadsheet */
+
+:root {
+  /* Typography */
+  --st-font-display: "Fraunces", Georgia, serif;
+  --st-font-narr: "Sorts Mill Goudy", Georgia, serif;
+  --st-font-ui: "Alegreya Sans", "Gill Sans", system-ui, sans-serif;
+  --st-font-hand: "Kalam", "Segoe Print", cursive;
+
+  /* Paper & Ink Surfaces */
+  --st-paper: #f1e7d0;
+  --st-paper-elevated: #f8f1df;
+  --st-paper-tab: #cdbd97;
+  --st-paper-tab-hover: #dccdaa;
+  --st-paper-row-hover: #eadfc4;
+  --st-paper-row-active: #e6d9bc;
+  --st-paper-edge: #d2c19c;
+
+  --st-ink: #211d33;
+  --st-ink-muted: #5a5068;
+  --st-rule: #211d33;
+  --st-rule-light: #d8c9a6;
+  --st-rule-soft: #bfae87;
+
+  /* Semantic Accents on Paper */
+  --st-accent-player: #2b4a9b;
+  --st-accent-player-hover: #1d3470;
+  --st-accent-player-ink: #fff8ea;
+  --st-accent-foe: #b8371f;
+  --st-accent-friend: #1f6b63;
+  --st-accent-gold: #dcae4a;
+  --st-map-ink: #3d6cc0;
+  --st-map-ink-deep: #2f58a8;
+  --st-map-paper: #f8f4e6;
+
+  /* Dark Rail & Horizon Surfaces */
+  --st-rail-bg: #1a1838;
+  --st-rail-ink: #ece6f5;
+  --st-rail-ink-bright: #fff8ea;
+  --st-rail-ink-muted: #b3a9cf;
+  --st-rail-border: rgba(236, 230, 245, 0.2);
+  --st-rail-border-strong: rgba(236, 230, 245, 0.36);
+  --st-rail-gold: #e7bf6a;
+  --st-rail-hp: #ef6f55;
+  --st-rail-foe: #ef6f55;
+  --st-rail-friend: #6fc7b6;
+  --st-rail-player: #8fa9ee;
+
+  /* Cover */
+  --st-cover-bg: #23204a;
+  --st-cover-ink: #fff3d9;
+
+  /* Radii & Shadows */
+  --st-radius-sm: 2px;
+  --st-radius-md: 4px;
+  --st-page-shadow: 0 36px 90px rgba(8, 6, 30, 0.6), 0 2px 0 var(--st-paper-edge);
+  --st-spread-shadow: 0 30px 80px rgba(8, 6, 30, 0.6);
+
+  /* Default Sky (Dusk) */
+  --st-sky-bg: linear-gradient(180deg, #1b1a3c 0%, #43366d 38%, #a8627c 68%, #f0a56f 100%);
+  --st-sky-far: #7a5d8c;
+  --st-sky-mid: #45386c;
+  --st-sky-ground: #1a1838;
+  --st-sky-orb: #ffd7a1;
+  --st-sky-glow: rgba(255, 190, 120, 0.45);
+  --st-sky-orb-x: 71%;
+  --st-sky-orb-y: 248px;
+  --st-sky-stars: 0.5;
+}
+
+/* Time-of-day sky states */
+[data-time="dawn"] {
+  --st-sky-bg: linear-gradient(180deg, #2a2550 0%, #6d5a8e 40%, #e39aa0 72%, #ffd3a1 100%);
+  --st-sky-far: #a886a6;
+  --st-sky-mid: #6a5488;
+  --st-sky-ground: #2a2650;
+  --st-sky-orb: #fff0cf;
+  --st-sky-glow: rgba(255, 225, 170, 0.5);
+  --st-sky-orb-x: 20%;
+  --st-sky-orb-y: 262px;
+  --st-sky-stars: 0;
+}
+
+[data-time="day"] {
+  --st-sky-bg: linear-gradient(180deg, #2c669e 0%, #7fb6d6 58%, #d7ebe6 100%);
+  --st-sky-far: #8fb0c8;
+  --st-sky-mid: #55809c;
+  --st-sky-ground: #1f3550;
+  --st-sky-orb: #fffbe6;
+  --st-sky-glow: rgba(255, 250, 220, 0.55);
+  --st-sky-orb-x: 58%;
+  --st-sky-orb-y: 70px;
+  --st-sky-stars: 0;
+}
+
+[data-time="dusk"] {
+  --st-sky-bg: linear-gradient(180deg, #1b1a3c 0%, #43366d 38%, #a8627c 68%, #f0a56f 100%);
+  --st-sky-far: #7a5d8c;
+  --st-sky-mid: #45386c;
+  --st-sky-ground: #1a1838;
+  --st-sky-orb: #ffd7a1;
+  --st-sky-glow: rgba(255, 190, 120, 0.45);
+  --st-sky-orb-x: 71%;
+  --st-sky-orb-y: 248px;
+  --st-sky-stars: 0.5;
+}
+
+[data-time="night"] {
+  --st-sky-bg: linear-gradient(180deg, #0b0e24 0%, #1a2148 60%, #34406e 100%);
+  --st-sky-far: #2c3560;
+  --st-sky-mid: #1d2447;
+  --st-sky-ground: #11142c;
+  --st-sky-orb: #eef0ff;
+  --st-sky-glow: rgba(200, 210, 255, 0.3);
+  --st-sky-orb-x: 30%;
+  --st-sky-orb-y: 84px;
+  --st-sky-stars: 1;
+}
+
+/* Fight stage warms the horizon to ember */
+[data-stage="fight"] {
+  --st-sky-bg: linear-gradient(180deg, #15122c 0%, #3c2244 42%, #8f3c3c 74%, #de7742 100%);
+  --st-sky-far: #6e3a4c;
+  --st-sky-mid: #3d233f;
+  --st-sky-ground: #1b1226;
+  --st-sky-orb: #ffc98f;
+  --st-sky-glow: rgba(255, 140, 80, 0.45);
+  --st-sky-orb-x: 71%;
+  --st-sky-orb-y: 262px;
+  --st-sky-stars: 0.25;
+}

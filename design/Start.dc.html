@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Start screen</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Spectral:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b1410}
+a{color:#d9b25c}a:hover{color:#ecc978}
+.lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a5b8aa;font-weight:600}
+</style>
+</helmet>
+<div style="width: 1280px; height: 800px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px; padding: 56px 72px; background: #0b1410; color: #eee9d8; font-family: Inter, system-ui, sans-serif; font-size: 14px; border: 1px solid #284032; border-radius: 12px">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end">
+<div>
+<div style="font-family: Spectral, serif; font-size: 44px; font-weight: 600; line-height: 1">Solo Tales</div>
+<div style="color: #a5b8aa; margin-top: 8px">A one-player tabletop game. Your saves live with this page.</div>
+</div>
+<div style="display: flex; gap: 8px">
+<button style="font: 500 13px Inter,sans-serif; color: #cbd7cd; background: transparent; border: 1px solid #284032; border-radius: 8px; height: 40px; padding: 0 14px; cursor: pointer">Import save</button>
+<button style="font: 500 13px Inter,sans-serif; color: #cbd7cd; background: transparent; border: 1px solid #284032; border-radius: 8px; height: 40px; padding: 0 14px; cursor: pointer">Settings</button>
+</div>
+</div>
+
+<div style="display: flex; gap: 20px; align-items: stretch">
+<div style="flex: 1.4; background: #24372b; border: 1px solid #5c4b2b; border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,.5); padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<span class="lbl" style="color: #d9b25c">Continue</span>
+<div style="display: flex; gap: 16px; align-items: center">
+<div aria-hidden="true" style="width: 56px; height: 56px; border-radius: 50%; background: #3a2d14; border: 2px solid #d9b25c; display: flex; align-items: center; justify-content: center; font-family: Spectral, serif; font-weight: 600; font-size: 24px; color: #ecc978">E</div>
+<div>
+<div style="font-family: Spectral, serif; font-size: 28px; font-weight: 600">The Hollow Mill</div>
+<div style="color: #a5b8aa">Edda Vane · Human Fighter 3 · Session 4 · played 2 days ago</div>
+</div>
+</div>
+<div style="font-family: Spectral, serif; font-size: 17px; line-height: 1.6; color: #e6e4d4">You found goblin tracks and a scratched iron key in the old mill. A voice called up from below the grain chute.</div>
+<div style="display: flex; gap: 10px; margin-top: auto">
+<button style="font: 600 15px Inter,sans-serif; color: #1a160e; background: #d9b25c; border: 0; border-radius: 8px; height: 48px; padding: 0 24px; cursor: pointer">Continue story</button>
+<button style="font: 500 14px Inter,sans-serif; color: #cbd7cd; background: transparent; border: 1px solid #335040; border-radius: 8px; height: 48px; padding: 0 16px; cursor: pointer">Open journal</button>
+</div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px">
+<span class="lbl">Other campaigns</span>
+<button style="display: flex; align-items: center; gap: 12px; text-align: left; font: 14px Inter,sans-serif; color: #eee9d8; background: #112019; border: 1px solid #284032; border-radius: 10px; padding: 14px 16px; cursor: pointer">
+<span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: #2a2715; border: 2px solid #e0b85a; display: flex; align-items: center; justify-content: center; font-family: Spectral, serif; font-weight: 600; font-size: 17px; color: #cfe0f7">I</span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Salt and Ash</span><span style="font-size: 12px; color: #a5b8aa">Ilse Marr · Wizard 3 · Session 2</span></span>
+<span style="font-size: 12px; color: #a5b8aa">1 week ago</span>
+</button>
+<button style="display: flex; align-items: center; justify-content: center; gap: 10px; font: 600 14px Inter,sans-serif; color: #eee9d8; background: transparent; border: 1px dashed #5c4b2b; border-radius: 10px; min-height: 72px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>New campaign</button>
+<div style="font-size: 12px; color: #a5b8aa; line-height: 1.5; margin-top: auto">New campaigns ask for setting and tone, then character creation. Quick start skips to a ready-made hero.</div>
+</div>
+</div>
+
+<div style="margin-top: auto; font-size: 11px; color: #a5b8aa">Icons by Lorc, Delapouite, Willdabeast and Skoll from game-icons.net, CC BY 3.0.</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

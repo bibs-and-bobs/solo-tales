@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Journal</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Spectral:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b1410}
+a{color:#d9b25c}a:hover{color:#ecc978}
+.lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a5b8aa;font-weight:600}
+.sec{font:500 13px Inter,sans-serif;color:#a5b8aa;background:transparent;border:1px solid transparent;border-radius:999px;height:36px;padding:0 14px;cursor:pointer;white-space:nowrap}
+.link{font:500 13px Inter,sans-serif;color:#eee9d8;background:#192d23;border:1px solid #335040;border-radius:8px;height:40px;padding:0 12px;cursor:pointer;display:flex;align-items:center;gap:8px}
+</style>
+</helmet>
+<div style="width: 1280px; height: 880px; box-sizing: border-box; display: flex; flex-direction: column; background: #112019; color: #eee9d8; font-family: Inter, system-ui, sans-serif; font-size: 14px; border: 1px solid #284032; border-radius: 12px; overflow: hidden">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 24px; border-bottom: 1px solid #1f3529">
+<div style="font-family: Spectral, serif; font-size: 22px; font-weight: 600">Journal</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<label for="jsearch" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search journal</label>
+<input id="jsearch" placeholder="Search people, places, clues…" style="width: 340px; font: 14px Inter,sans-serif; color: #eee9d8; background: #0a120e; border: 1px solid #335040; border-radius: 8px; padding: 0 14px; height: 40px">
+<button aria-label="Close journal" style="width: 40px; height: 40px; border-radius: 8px; background: transparent; border: 1px solid #284032; color: #cbd7cd; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+</header>
+
+<nav style="display: flex; gap: 6px; padding: 12px 24px; border-bottom: 1px solid #1f3529">
+<button class="sec">All</button>
+<button class="sec" style="color: #1a160e; background: #d9b25c; font-weight: 600">People · 4</button>
+<button class="sec">Places · 3</button>
+<button class="sec">Lore &amp; items · 2</button>
+<button class="sec">Knowledge · 5</button>
+<button class="sec">Timeline</button>
+<button class="sec" style="margin-left: auto; color: #ecc978">Pinned · 3</button>
+</nav>
+
+<div style="display: flex; align-items: center; gap: 16px; padding: 12px 24px; border-bottom: 1px solid #1f3529; background: #24150f">
+<span class="lbl" style="color: #f0a99f">Known threat</span>
+<span style="font-weight: 600">Goblins raid Brookhollow</span>
+<span style="display: flex; gap: 4px" aria-label="4 of 6 segments filled"><span style="width: 22px; height: 8px; border-radius: 2px; background: #c9584b"></span><span style="width: 22px; height: 8px; border-radius: 2px; background: #c9584b"></span><span style="width: 22px; height: 8px; border-radius: 2px; background: #c9584b"></span><span style="width: 22px; height: 8px; border-radius: 2px; background: #c9584b"></span><span style="width: 22px; height: 8px; border-radius: 2px; border: 1px solid #7a3a30"></span><span style="width: 22px; height: 8px; border-radius: 2px; border: 1px solid #7a3a30"></span></span>
+<span style="font-size: 13px; color: #f0c2ba">about 3 days left · faster if you rest nearby</span>
+<span style="margin-left: auto; font-size: 12px; color: #a5b8aa">Learned from Mara, Turn 38</span>
+</div>
+<div style="flex: 1; display: flex; min-height: 0">
+
+<div style="width: 360px; flex: 0 0 360px; border-right: 1px solid #1f3529; padding: 14px; display: flex; flex-direction: column; gap: 6px; overflow: auto">
+<sc-for list="{{people}}" as="p" hint-placeholder-count="4">
+<button style="{{p.style}}">
+<span aria-hidden="true" style="{{p.dot}}">{{p.initial}}</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="display: flex; align-items: center; gap: 8px"><span style="font-weight: 600">{{p.name}}</span><sc-if value="{{p.isNew}}" hint-placeholder-val="{{false}}"><span style="font-size: 10px; font-weight: 600; letter-spacing: .06em; color: #1a160e; background: #d9b25c; border-radius: 4px; padding: 2px 5px">NEW</span></sc-if></span>
+<span style="font-size: 12px; color: #a5b8aa">{{p.sub}}</span>
+</span>
+<span style="font-size: 12px; font-weight: 600; color: {{p.attColor}}">{{p.att}}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="flex: 1; min-width: 0; padding: 28px 36px; display: flex; flex-direction: column; gap: 22px; overflow: auto; background: #15281f">
+
+<div style="display: flex; align-items: flex-start; gap: 18px">
+<div aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: #1d3a55; border: 2px solid #7fb2e0; display: flex; align-items: center; justify-content: center; font-family: Spectral, serif; font-weight: 600; font-size: 28px; color: #d6e9fa">T</div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: Spectral, serif; font-size: 28px; font-weight: 600; line-height: 1.1">Tomas</div>
+<div style="color: #a5b8aa">The miller's son · about 12 years old</div>
+<div style="display: flex; gap: 8px; margin-top: 4px">
+<span style="font-size: 12px; font-weight: 600; color: #9cc8ef; background: #132a3d; border: 1px solid #3a6488; border-radius: 6px; padding: 4px 10px">Friendly</span>
+<span style="font-size: 12px; color: #a5b8aa; background: #192d23; border: 1px solid #284032; border-radius: 6px; padding: 4px 10px">Met · Session 4, Old Mill</span>
+</div>
+</div>
+<button style="display: flex; align-items: center; gap: 8px; font: 600 13px Inter,sans-serif; color: #ecc978; background: #2b2416; border: 1px solid #6a5326; border-radius: 8px; height: 40px; padding: 0 14px; cursor: pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 17v5M9 3h6l-1 7 4 3H6l4-3z"></path></svg>Pinned</button>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span class="lbl">What you know</span>
+<sc-for list="{{facts}}" as="f" hint-placeholder-count="3">
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 14px; background: #192d23; border-radius: 8px">
+<span style="line-height: 1.5">{{f.text}}</span>
+<span style="flex: 0 0 auto; font-size: 12px; color: #a5b8aa">{{f.src}}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span class="lbl">Said to you</span>
+<div style="background: #132a3d; border: 1px solid #3a6488; border-radius: 2px 14px 14px 14px; padding: 12px 16px; font-family: Spectral, serif; font-style: italic; font-size: 17px; line-height: 1.55; color: #e6f1fb">“Please, is someone up there? They took the lantern. I can't see my own hands.”</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span class="lbl">Open questions</span>
+<div style="display: flex; flex-direction: column; gap: 6px; color: #cbd7cd">
+<div>Why did the goblins take him alive?</div>
+<div>What does the mark on the iron key mean?</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span class="lbl">Linked</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button class="link"><span style="font-size: 11px; color: #a5b8aa">PLACE</span>Old Mill</button>
+<button class="link"><span style="font-size: 11px; color: #a5b8aa">QUEST</span>Find the miller's son</button>
+<button class="link"><span style="font-size: 11px; color: #a5b8aa">ITEM</span>Iron key</button>
+<button class="link"><span style="font-size: 11px; color: #a5b8aa">PERSON</span>Aldric, the miller</button>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="mynote" class="lbl">Your notes</label>
+<textarea id="mynote" style="font: 14px Inter,sans-serif; color: #eee9d8; background: #0a120e; border: 1px solid #335040; border-radius: 8px; padding: 10px 14px; min-height: 64px; resize: vertical">Aldric didn't seem surprised he was taken. Ask him about the goblins.</textarea>
+<span style="font-size: 12px; color: #a5b8aa">Your notes are sent to the narrator only when this entry is pinned.</span>
+</div>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":880}}'>
+class Component extends DCLogic {
+renderVals() {
+const row = 'display:flex;align-items:center;gap:12px;width:100%;min-height:56px;text-align:left;font:14px Inter,sans-serif;color:#eee9d8;border-radius:10px;padding:8px 12px;cursor:pointer;';
+const dot = 'flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Spectral,serif;font-weight:600;font-size:15px;';
+return {
+people: [
+{ name: 'Tomas', sub: "The miller's son", att: 'Friendly', attColor: '#9cc8ef', initial: 'T', isNew: true, style: row + 'background:#2b2416;border:1px solid #6a5326;', dot: dot + 'background:#1d3a55;border:2px solid #7fb2e0;color:#d6e9fa;' },
+{ name: 'Aldric', sub: 'Miller · hired you', att: 'Neutral', attColor: '#cbd7cd', initial: 'A', isNew: false, style: row + 'background:transparent;border:1px solid transparent;', dot: dot + 'background:#22382c;border:2px solid #8a8272;color:#eee9d8;' },
+{ name: 'Mara', sub: 'Innkeeper · Brookhollow', att: 'Friendly', attColor: '#9cc8ef', initial: 'M', isNew: false, style: row + 'background:transparent;border:1px solid transparent;', dot: dot + 'background:#1d3a55;border:2px solid #7fb2e0;color:#d6e9fa;' },
+{ name: 'Goblin Boss', sub: 'Under the mill', att: 'Hostile', attColor: '#f0928a', initial: 'G', isNew: false, style: row + 'background:transparent;border:1px solid transparent;', dot: dot + 'background:#4a1f1a;border:2px solid #e0705f;color:#ffd9d2;' }
+],
+facts: [
+{ text: 'Missing for three days before you were hired.', src: 'Aldric · Turn 3' },
+{ text: 'Held by goblins in the cellar under the mill.', src: 'Turn 42' },
+{ text: 'Unhurt, but has had no light since he was taken.', src: 'Turn 43' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

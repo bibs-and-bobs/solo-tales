@@ -1,0 +1,39 @@
+/* Theme: Minimalist Ink — Crisp Daylight Rag Paper & Charcoal */
+
+[data-theme="minimalist"] {
+  --st-paper: #faf8f4;
+  --st-paper-elevated: #ffffff;
+  --st-paper-tab: #e3dfd6;
+  --st-paper-tab-hover: #ece9e2;
+  --st-paper-row-hover: #f0ede6;
+  --st-paper-row-active: #e7e3da;
+  --st-paper-edge: #d4cfc4;
+
+  --st-ink: #171717;
+  --st-ink-muted: #57534e;
+  --st-rule: #292524;
+  --st-rule-light: #e5e1d8;
+  --st-rule-soft: #c7c1b5;
+
+  --st-accent-player: #1d4ed8;
+  --st-accent-player-hover: #1e40af;
+  --st-accent-player-ink: #ffffff;
+  --st-accent-foe: #b91c1c;
+  --st-accent-friend: #0f766e;
+  --st-accent-gold: #eab308;
+  --st-map-ink: #2563eb;
+  --st-map-ink-deep: #1d4ed8;
+  --st-map-paper: #ffffff;
+
+  --st-rail-bg: #27272a;
+  --st-rail-ink: #f4f4f5;
+  --st-rail-ink-bright: #ffffff;
+  --st-rail-ink-muted: #a1a1aa;
+  --st-rail-border: rgba(244, 244, 245, 0.18);
+  --st-rail-border-strong: rgba(244, 244, 245, 0.34);
+
+  --st-cover-bg: #18181b;
+  --st-cover-ink: #fafafa;
+  --st-page-shadow: 0 24px 60px rgba(0, 0, 0, 0.18), 0 1px 0 var(--st-paper-edge);
+  --st-spread-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}

@@ -1,0 +1,51 @@
+/* Theme: Obsidian Grimoire — Dark Slate Pages & Amber Leaf */
+
+[data-theme="obsidian"] {
+  --st-paper: #1b1d28;
+  --st-paper-elevated: #232635;
+  --st-paper-tab: #141620;
+  --st-paper-tab-hover: #252838;
+  --st-paper-row-hover: #242838;
+  --st-paper-row-active: #2a2f42;
+  --st-paper-edge: #0f1118;
+
+  --st-ink: #ece8df;
+  --st-ink-muted: #a19bb0;
+  --st-rule: #4a4d63;
+  --st-rule-light: #2d3144;
+  --st-rule-soft: #3d4158;
+
+  --st-accent-player: #7aa2f7;
+  --st-accent-player-hover: #9bb8ff;
+  --st-accent-player-ink: #0f1118;
+  --st-accent-foe: #e06c75;
+  --st-accent-friend: #56b6c2;
+  --st-accent-gold: #e0a952;
+  --st-map-ink: #6fa0ec;
+  --st-map-ink-deep: #8fb8f5;
+  --st-map-paper: #141722;
+
+  --st-rail-bg: #0d0e14;
+  --st-rail-ink: #e4e0d8;
+  --st-rail-ink-bright: #fff7e6;
+  --st-rail-ink-muted: #908ba0;
+  --st-rail-border: rgba(228, 224, 216, 0.14);
+  --st-rail-border-strong: rgba(228, 224, 216, 0.28);
+
+  --st-cover-bg: #12141e;
+  --st-cover-ink: #f7ecd5;
+  --st-page-shadow: 0 36px 90px rgba(0, 0, 0, 0.75), 0 2px 0 var(--st-paper-edge);
+  --st-spread-shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
+}
+
+[data-theme="obsidian"] [data-slot="action-btn"][data-variant="primary"],
+[data-theme="obsidian"] .st-btn-primary {
+  color: #0f1118;
+}
+
+[data-theme="obsidian"] [data-slot="combat-action"].is-primary,
+[data-theme="obsidian"] .st-btn-ink {
+  background: var(--st-ink);
+  color: var(--st-paper);
+  border-color: var(--st-ink);
+}
